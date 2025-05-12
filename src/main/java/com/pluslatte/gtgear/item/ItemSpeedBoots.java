@@ -30,5 +30,6 @@ public class ItemSpeedBoots extends ItemArmorBase {
                 'S', spring.dat(MT.Fe),
                 'B', Items.iron_boots
             );
+        setCreativeTab(Gt6Gears.CREATIVE_TAB);
     }
 }

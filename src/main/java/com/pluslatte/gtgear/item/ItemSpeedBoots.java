@@ -1,18 +1,17 @@
 package com.pluslatte.gtgear.item;
 
-import com.pluslatte.gtgear.GtGear;
+import com.pluslatte.gtgear.Gt6Gears;
 import gregapi.data.MT;
 import gregapi.item.ItemArmorBase;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 
 import static gregapi.data.OP.*;
 
 public class ItemSpeedBoots extends ItemArmorBase {
     public ItemSpeedBoots() {
         super(
-                GtGear.MODID,
-                "gtgear.speedboots",
+                Gt6Gears.MODID,
+                "gt6gears.speedboots",
                 "Walking Shoes",
                 "Assists walking.",
                 "speed_boots",

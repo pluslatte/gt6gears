@@ -11,10 +11,10 @@ public class ItemSpeedBoots extends ItemArmorBase {
     public ItemSpeedBoots() {
         super(
                 Gt6Gears.MODID,
-                "gt6gears.speedboots",
-                "Walking Shoes",
+                "gt6gears.mechanicalboots",
+                "Mechanical Boots",
                 "Assists walking.",
-                "speed_boots",
+                "mechanical_boots",
                 3,
                 new int[] {2, 2, 2, 2},
                 392,

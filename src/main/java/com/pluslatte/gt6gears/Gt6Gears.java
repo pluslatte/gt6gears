@@ -23,8 +23,8 @@ public final class Gt6Gears extends Abstract_Mod
 
     public static ItemSpeedBoots itemSpeedBoots;
 
-    @cpw.mods.fml.common.SidedProxy(modId = MODID, clientSide = "gregapi.api.example.Example_Proxy_Client", serverSide = "gregapi.api.example.Example_Proxy_Server")
-    public static gregapi.api.Abstract_Proxy PROXY;
+    @cpw.mods.fml.common.SidedProxy(modId = MODID, clientSide = "com.pluslatte.gt6gears.ProxyClient", serverSide = "com.pluslatte.gt6gears.ProxyServer")
+    public static ProxyCommon PROXY;
 
     @Override
     public String getModID() {

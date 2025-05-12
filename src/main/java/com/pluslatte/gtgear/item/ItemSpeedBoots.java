@@ -3,7 +3,10 @@ package com.pluslatte.gtgear.item;
 import com.pluslatte.gtgear.Gt6Gears;
 import gregapi.data.MT;
 import gregapi.item.ItemArmorBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 import static gregapi.data.OP.*;
 
@@ -31,5 +34,15 @@ public class ItemSpeedBoots extends ItemArmorBase {
                 'B', Items.iron_boots
             );
         setCreativeTab(Gt6Gears.CREATIVE_TAB);
+    }
+
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+        super.onArmorTick(world, player, itemStack);
+
+        if (player.onGround) {
+            player.motionX *= 1.3;
+            player.motionZ *= 1.3;
+        }
     }
 }

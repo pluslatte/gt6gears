@@ -1,12 +1,16 @@
 package com.pluslatte.gtgear;
 
+import com.pluslatte.gtgear.item.ItemSpeedBoots;
 import cpw.mods.fml.common.event.*;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
 import gregapi.code.ModData;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 @Mod(modid = GtGear.MODID, version = GtGear.VERSION)
 public final class GtGear extends Abstract_Mod
@@ -15,6 +19,10 @@ public final class GtGear extends Abstract_Mod
     public static final String MODNAME = "GtGear";
     public static final String VERSION = "1.0";
     public static ModData MOD_DATA = new ModData(MODID, MODNAME);
+
+    public static CreativeTabs CREATIVE_TAB;
+
+    public static ItemSpeedBoots itemSpeedBoots;
 
     @cpw.mods.fml.common.SidedProxy(modId = MODID, clientSide = "gregapi.api.example.Example_Proxy_Client", serverSide = "gregapi.api.example.Example_Proxy_Server")
     public static gregapi.api.Abstract_Proxy PROXY;
@@ -50,7 +58,19 @@ public final class GtGear extends Abstract_Mod
 
     @Override
     public void onModPreInit2(FMLPreInitializationEvent aEvent) {
+        CREATIVE_TAB = new CreativeTabs(MODID) {
+            @Override
+            public ItemStack getIconItemStack() {
+                return new ItemStack(itemSpeedBoots, 1, 0);
+            }
 
+            @Override
+            public Item getTabIconItem() {
+                return itemSpeedBoots;
+            }
+        };
+
+        itemSpeedBoots = new ItemSpeedBoots();
     }
 
     @Override

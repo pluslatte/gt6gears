@@ -1,0 +1,16 @@
+[
+{
+  "modid": "gtgear",
+  "name": "GtGear",
+  "description": "jetpack and boots",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["pluslatte"],
+  "credits": "anatawa12",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,12 +1,14 @@
-package com.pluslatte.gtgear.item;
+package com.pluslatte.gt6gears.item;
 
-import com.pluslatte.gtgear.Gt6Gears;
+import com.pluslatte.gt6gears.Gt6Gears;
 import gregapi.data.MT;
 import gregapi.item.ItemArmorBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import java.util.UUID;
 
 import static gregapi.data.OP.*;
 
@@ -41,8 +43,9 @@ public class ItemSpeedBoots extends ItemArmorBase {
         super.onArmorTick(world, player, itemStack);
 
         if (player.onGround) {
-            player.motionX *= 1.3;
-            player.motionZ *= 1.3;
+                // 移動速度向上
+                player.motionX *= 1.3;
+                player.motionZ *= 1.3;
         }
     }
 }

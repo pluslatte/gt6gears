@@ -1,6 +1,6 @@
-package com.pluslatte.gtgear;
+package com.pluslatte.gt6gears;
 
-import com.pluslatte.gtgear.item.ItemSpeedBoots;
+import com.pluslatte.gt6gears.item.ItemSpeedBoots;
 import cpw.mods.fml.common.event.*;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;

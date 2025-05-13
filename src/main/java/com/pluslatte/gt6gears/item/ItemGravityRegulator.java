@@ -4,6 +4,7 @@ import com.pluslatte.gt6gears.Gt6Gears;
 import com.pluslatte.gt6gears.ProxyClient;
 import com.pluslatte.gt6gears.ProxyCommon;
 import gregapi.code.TagData;
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.TD;
@@ -55,14 +56,14 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
                 20, // 防具強度
                 false,
                 false,
-                "CPC",
-                "FBF",
-                "CUC",
-                'C', plateGemTiny.dat(MT.NetherStar), // ネザースターの小プレート
+                "BPB",
+                "FCF",
+                "BUB",
+                'C', IL.Field_Generator_EV, // EV フィールドジェネレーター
                 'P', plateCurved.dat(MT.Os), // Osmiumプレート
-                'B', circuit.dat(MT.Ti), // Tiの回路（高級回路の代替）
+                'B', IL.Processor_Crystal_Ruby, // ルビーのクリスタルプロセッサ
                 'F', ring.dat(MT.TungstenSteel), // タングステン鋼のリング
-                'U', plateGem.dat(MT.Diamond) // ダイヤモンドプレート
+                'U', plateGem.dat(MT.NetherStar) // ネザースタープレート
             );
         setCreativeTab(Gt6Gears.CREATIVE_TAB);
         setMaxStackSize(1);

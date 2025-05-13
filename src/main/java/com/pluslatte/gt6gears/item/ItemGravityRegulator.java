@@ -33,9 +33,9 @@ import static gregapi.data.OP.*;
 public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
     
     // エネルギー関連の定数
-    private static final long ENERGY_CAPACITY = 1000000L; // 最大容量: 1,000,000 EU
-    private static final long ENERGY_SIZE_IN = 128L; // 入力サイズ: 128 EU/t
-    private static final long ENERGY_SIZE_OUT = 128L; // 出力サイズ: 128 EU/t
+    private static final long ENERGY_CAPACITY = 8192000L; // 最大容量: 8,192,000 EU
+    private static final long ENERGY_SIZE_IN = 2048L; // 入力サイズ: 2048 EU/t
+    private static final long ENERGY_SIZE_OUT = 2048L; // 出力サイズ: 2048 EU/t
     private static final long ACTIVATION_COST = 10000L; // 起動コスト: 10,000 EU
     private static final long ENERGY_PER_TICK = 50L; // 維持コスト: 50 EU/tick
     
@@ -55,18 +55,27 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
                 15, // エンチャント性
                 20, // 防具強度
                 false,
-                false,
-                "BPB",
-                "FCF",
-                "BUB",
-                'C', IL.Field_Generator_EV, // EV フィールドジェネレーター
-                'P', plateCurved.dat(MT.Os), // Osmiumプレート
-                'B', IL.Processor_Crystal_Ruby, // ルビーのクリスタルプロセッサ
-                'F', ring.dat(MT.TungstenSteel), // タングステン鋼のリング
-                'U', plateGem.dat(MT.NetherStar) // ネザースタープレート
+                false
+                // レシピを後で登録するため、ここでは指定しない
             );
         setCreativeTab(Gt6Gears.CREATIVE_TAB);
         setMaxStackSize(1);
+    }
+    
+    public static void registerRecipe() {
+        // レシピを手動で登録
+        gregapi.util.CR.shaped(
+            gregapi.util.ST.make(Gt6Gears.itemGravityRegulator, 1, 0),
+            gregapi.util.CR.DEF_REV_NCC,
+            "BPB",
+            "FCF",
+            "BUB",
+            'C', IL.Field_Generator_EV,
+            'P', plateCurved.dat(MT.Os),
+            'B', IL.Processor_Crystal_Ruby,
+            'F', ring.dat(MT.TungstenSteel),
+            'U', plateGem.dat(MT.NetherStar)
+        );
     }
     
     @Override

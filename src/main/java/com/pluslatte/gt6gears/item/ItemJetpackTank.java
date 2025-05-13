@@ -35,16 +35,25 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
                 10, // エンチャント性
                 15, // 防具強度
                 false,
-                false,
-                "P P",
-                "TBT",
-                "PTP",
-                'P', plateCurved.dat(MT.Steel),
-                'T', pipeMedium.dat(MT.Steel),
-                'B', Items.leather_chestplate
+                false
+                // レシピを後で登録するため、ここでは指定しない
             );
         setCreativeTab(Gt6Gears.CREATIVE_TAB);
         setMaxStackSize(1);
+    }
+    
+    public static void registerRecipe() {
+        // レシピを手動で登録
+        gregapi.util.CR.shaped(
+            gregapi.util.ST.make(Gt6Gears.itemJetpackTank, 1, 0),
+            gregapi.util.CR.DEF_REV_NCC,
+            "P P",
+            "TBT",
+            "PTP",
+            'P', plateCurved.dat(MT.Steel),
+            'T', pipeMedium.dat(MT.Steel),
+            'B', Items.leather_chestplate
+        );
     }
     
     @Override

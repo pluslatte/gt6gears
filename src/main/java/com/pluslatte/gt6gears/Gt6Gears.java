@@ -86,7 +86,10 @@ public final class Gt6Gears extends Abstract_Mod
 
     @Override
     public void onModPostInit2(FMLPostInitializationEvent aEvent) {
-
+        // 後の初期化段階ですべてのアイテムのレシピを登録
+        ItemMechanicalBoots.registerRecipe();
+        ItemJetpackTank.registerRecipe();
+        ItemGravityRegulator.registerRecipe();
     }
 
     @Override

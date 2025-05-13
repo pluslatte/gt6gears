@@ -24,17 +24,26 @@ public class ItemMechanicalBoots extends ItemArmorBase {
                 8,
                 12,
                 false,
-                false,
-                "G G",
-                "C C",
-                "SBS",
-                'G', gearGtSmall.dat(MT.Fe),
-                'C', plateCurved.dat(MT.Fe),
-                'S', spring.dat(MT.Fe),
-                'B', Items.iron_boots
+                false
+                // レシピを後で登録するため、ここでは指定しない
             );
         setCreativeTab(Gt6Gears.CREATIVE_TAB);
         setMaxStackSize(1);
+    }
+    
+    public static void registerRecipe() {
+        // レシピを手動で登録
+        gregapi.util.CR.shaped(
+            gregapi.util.ST.make(Gt6Gears.itemMechanicalBoots, 1, 0),
+            gregapi.util.CR.DEF_REV_NCC,
+            "G G",
+            "C C",
+            "SBS",
+            'G', gearGtSmall.dat(MT.Fe),
+            'C', plateCurved.dat(MT.Fe),
+            'S', spring.dat(MT.Fe),
+            'B', Items.iron_boots
+        );
     }
 
     @Override

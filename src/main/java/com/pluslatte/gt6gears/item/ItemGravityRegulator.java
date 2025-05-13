@@ -50,10 +50,10 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
                 "Allows you to fly. Powered by EU.",
                 "gravity_regulator",
                 1, // 胴体装備（chestplate）
-                new int[] {3, 6, 5, 2}, // 防御値（頭、胴、脚、足）
-                392, // 耐久値
-                15, // エンチャント性
-                20, // 防具強度
+                new int[] {0, 8, 0, 0}, // 防御値8（ダイヤモンド胸当てと同等）
+                0, // 耐久値0 = 耐久無制限（壊れない）
+                20, // エンチャント性をダイヤモンドより高く
+                25, // 防具強度を高めに設定
                 false,
                 false
                 // レシピを後で登録するため、ここでは指定しない
@@ -100,6 +100,7 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
         }
         list.add(LH.Chat.CYAN + "Press " + LH.Chat.YELLOW + keyBind +
                  LH.Chat.CYAN + " to toggle flight mode");
+        list.add(LH.Chat.WHITE + "Fall damage protection: " + (isEnabled ? LH.Chat.GREEN + "Enabled" : LH.Chat.RED + "Disabled"));
     }
     
     @Override
@@ -141,6 +142,9 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
                     // 維持コストを消費
                     setEnergyStored(TD.Energy.EU, stack, energy - ENERGY_PER_TICK);
                 }
+                
+                // 飛行中は常に落下ダメージをリセット
+                player.fallDistance = 0;
             } else {
                 // エネルギーがない場合は飛行を無効化
                 if (player.capabilities.allowFlying && !player.capabilities.isCreativeMode) {
@@ -152,6 +156,8 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
                     
                     player.sendPlayerAbilities();
                     nbt.setBoolean("FlightEnabled", false);
+                    
+                    // エネルギー切れは自己責任、保護なし
                 }
             }
         } else {

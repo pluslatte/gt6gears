@@ -30,10 +30,10 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
                 "Allows flying.",
                 "jetpack_tank",
                 1, // 胴体装備（chestplate）
-                new int[] {3, 6, 5, 2}, // 防御値（頭、胴、脚、足）
-                392, // 耐久値
-                10, // エンチャント性
-                15, // 防具強度
+                new int[] {0, 6, 0, 0}, // 防御値6（ダイヤモンド胸当ての8より低く、鉄の6と同等）
+                336, // 耐久値を鉄240とダイヤ528の中間に設定
+                12, // エンチャント性を鉄とダイヤの中間に
+                15, // 防具強度を中間的な値に
                 false,
                 false
                 // レシピを後で登録するため、ここでは指定しない

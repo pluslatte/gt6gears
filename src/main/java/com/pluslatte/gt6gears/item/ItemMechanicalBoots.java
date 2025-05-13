@@ -18,11 +18,11 @@ public class ItemMechanicalBoots extends ItemArmorBase {
                 "Mechanical Boots",
                 "Assists walking.",
                 "mechanical_boots",
-                3,
-                new int[] {2, 2, 2, 2},
-                392,
-                8,
-                12,
+                3, // 足装備
+                new int[] {0, 0, 0, 3}, // 足装備の防御値を3に（鉄のブーツ2より少し高い）
+                234, // 耐久値を鉄のブーツ195の1.2倍（コスト分高く）
+                12, // エンチャント性を鉄より少し高く
+                10, // 防具強度（一般的な値）
                 false,
                 false
                 // レシピを後で登録するため、ここでは指定しない

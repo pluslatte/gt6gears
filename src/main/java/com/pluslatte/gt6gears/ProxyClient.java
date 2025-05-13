@@ -32,6 +32,18 @@ public class ProxyClient extends Abstract_Proxy {
     public void onPlayerTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer player = event.player;
 
+        if (
+            (
+                player.getEquipmentInSlot(3) == null ||
+                player.getEquipmentInSlot(3).getItem() != Gt6Gears.itemGravityRegulator
+            )
+            && !player.capabilities.isCreativeMode
+            && player.capabilities.allowFlying
+        ) {
+            player.capabilities.allowFlying = false;
+            player.capabilities.isFlying = false;
+        }
+
         if (player.getEquipmentInSlot(1) == null) {
             player.stepHeight = 0.5F;
             return;

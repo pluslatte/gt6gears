@@ -1,5 +1,6 @@
 package com.pluslatte.gt6gears;
 
+import com.pluslatte.gt6gears.event.KeyInputHandler;
 import com.pluslatte.gt6gears.network.PacketHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -22,7 +23,10 @@ public final class ProxyCommon extends Abstract_Proxy {
         
         // パケットハンドラーの初期化
         PacketHandler.init();
-        
+
+        // サーバー側のイベントハンドラーを登録
+        KeyInputHandler keyHandler = new KeyInputHandler();
+        FMLCommonHandler.instance().bus().register(keyHandler);
         //this allows it to read game events for other classes without having to be added unnecessarily to all the game building events.
     }
 

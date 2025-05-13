@@ -25,7 +25,7 @@ public final class Gt6Gears extends Abstract_Mod
     public static ItemMechanicalBoots itemMechanicalBoots;
     public static ItemJetpackTank itemJetpackTank;
 
-    @cpw.mods.fml.common.SidedProxy(modId = MODID, clientSide = "com.pluslatte.gt6gears.ProxyCommon", serverSide = "com.pluslatte.gt6gears.ProxyCommon")
+    @cpw.mods.fml.common.SidedProxy(modId = MODID, clientSide = "com.pluslatte.gt6gears.ProxyClient", serverSide = "com.pluslatte.gt6gears.ProxyCommon")
     public static Abstract_Proxy PROXY;
 
     @Override

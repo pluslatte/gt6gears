@@ -20,7 +20,7 @@ import static gregapi.data.OP.*;
 public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerItem {
     
     // タンク容量（mB単位）
-    private static final int TANK_CAPACITY = 16000; // 16バケツ分（16000mB）
+    private static final int TANK_CAPACITY = 24000; // 14バケツ分（24000mB）
 
     public ItemJetpackTank() {
         super(
@@ -209,9 +209,9 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
     }
     
     // ジェットパック関連の定数
-    private static final int FUEL_CONSUMPTION_PER_TICK = 1; // 1ティックあたりの燃料消費量（mB）
-    private static final double JETPACK_THRUST = 0.15; // ジェットパックの推進力 (適切な値に修正)
-    private static final double MAX_VERTICAL_SPEED = 1.0; // 最大上昇速度
+    private static final int FUEL_CONSUMPTION_PER_TICK = 6; // 1ティックあたりの燃料消費量（mB）
+    private static final double JETPACK_THRUST = 0.1; // ジェットパックの推進力
+    private static final double MAX_VERTICAL_SPEED = 0.8; // 最大上昇速度
     
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {

@@ -11,7 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 
 
-public final class ProxyServer extends Abstract_Proxy {
+public final class ProxyCommon extends Abstract_Proxy {
     // Insert your Serverside-only implementation of Stuff here
     @Override
     public void onProxyAfterPostInit(Abstract_Mod aMod, FMLPostInitializationEvent aEvent) {
@@ -26,6 +26,7 @@ public final class ProxyServer extends Abstract_Proxy {
         EntityPlayer player = event.player;
 
         if (player.getEquipmentInSlot(1) == null) {
+            player.stepHeight = 0.5F;
             return;
         }
         if (player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemSpeedBoots) {

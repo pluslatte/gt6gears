@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
@@ -196,5 +197,53 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
                 FL.Diesel.is(fluid) ||
                 FL.Kerosine.is(fluid) ||
                 FL.Petrol.is(fluid);
+    }
+    
+    // ジェットパック関連の定数
+    private static final int FUEL_CONSUMPTION_PER_TICK = 1; // 1ティックあたりの燃料消費量（mB）
+    private static final double JETPACK_THRUST = 20.0; // ジェットパックの推進力
+    private static final double MAX_VERTICAL_SPEED = 3.0; // 最大上昇速度
+    
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+        super.onArmorTick(world, player, itemStack);
+        
+        if (world.isRemote) {
+            // クライアント側では何もしない（パーティクルは後で追加可能）
+            return;
+        }
+        
+        // プレイヤーがジャンプキーを押しているか確認
+        boolean isJumping = player.getEntityData().getBoolean("JetpackJumping");
+        
+        // 燃料をチェック
+        FluidStack fuel = getFluid(itemStack);
+        if (fuel == null || fuel.amount <= 0) {
+            return;
+        }
+        
+        if (isJumping && !player.onGround) {
+            // 燃料があり、ジャンプキーが押されていて、空中にいる場合
+            
+            // 燃料を消費
+            if (fuel.amount >= FUEL_CONSUMPTION_PER_TICK) {
+                drain(itemStack, FUEL_CONSUMPTION_PER_TICK, true);
+                
+                // 上方向への推進力を適用
+                if (player.motionY < MAX_VERTICAL_SPEED) {
+                    player.motionY += JETPACK_THRUST;
+                    if (player.motionY > MAX_VERTICAL_SPEED) {
+                        player.motionY = MAX_VERTICAL_SPEED;
+                    }
+                }
+                
+                // 落下ダメージをリセット
+                player.fallDistance = 0;
+                
+                // パーティクル効果を表示（サーバー側からクライアントに送信）
+                world.spawnParticle("smoke", player.posX, player.posY, player.posZ, 0, -0.5, 0);
+                world.spawnParticle("flame", player.posX, player.posY, player.posZ, 0, -0.1, 0);
+            }
+        }
     }
 }

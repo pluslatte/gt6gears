@@ -29,6 +29,11 @@ public class KeyInputHandler {
         // 胴体装備をチェック
         ItemStack chestplate = player.inventory.armorItemInSlot(2);
         if (chestplate == null || !(chestplate.getItem() instanceof ItemJetpackTank)) {
+            // ジェットパックを装備していない場合、ジャンプ状態をリセット
+            if (player.getEntityData().getBoolean("JetpackJumping")) {
+                player.getEntityData().setBoolean("JetpackJumping", false);
+                PacketHandler.INSTANCE.sendToServer(new PacketJetpackJump(false));
+            }
             return;
         }
         
@@ -39,6 +44,9 @@ public class KeyInputHandler {
         // 状態が変化した場合のみパケットを送信
         if (isJumping != wasJumping) {
             wasJumping = isJumping;
+            // クライアント側でもデータを設定
+            player.getEntityData().setBoolean("JetpackJumping", isJumping);
+            // サーバーに通知
             PacketHandler.INSTANCE.sendToServer(new PacketJetpackJump(isJumping));
         }
     }

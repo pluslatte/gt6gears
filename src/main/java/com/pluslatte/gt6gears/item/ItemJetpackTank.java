@@ -201,17 +201,12 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
     
     // ジェットパック関連の定数
     private static final int FUEL_CONSUMPTION_PER_TICK = 1; // 1ティックあたりの燃料消費量（mB）
-    private static final double JETPACK_THRUST = 20.0; // ジェットパックの推進力
-    private static final double MAX_VERTICAL_SPEED = 3.0; // 最大上昇速度
+    private static final double JETPACK_THRUST = 0.15; // ジェットパックの推進力 (適切な値に修正)
+    private static final double MAX_VERTICAL_SPEED = 1.0; // 最大上昇速度
     
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
         super.onArmorTick(world, player, itemStack);
-        
-        if (world.isRemote) {
-            // クライアント側では何もしない（パーティクルは後で追加可能）
-            return;
-        }
         
         // プレイヤーがジャンプキーを押しているか確認
         boolean isJumping = player.getEntityData().getBoolean("JetpackJumping");
@@ -222,14 +217,16 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
             return;
         }
         
-        if (isJumping && !player.onGround) {
-            // 燃料があり、ジャンプキーが押されていて、空中にいる場合
+        if (isJumping) {
+            // 燃料があり、ジャンプキーが押されている場合
             
-            // 燃料を消費
             if (fuel.amount >= FUEL_CONSUMPTION_PER_TICK) {
-                drain(itemStack, FUEL_CONSUMPTION_PER_TICK, true);
+                if (!world.isRemote) {
+                    // サーバー側でのみ燃料を消費
+                    drain(itemStack, FUEL_CONSUMPTION_PER_TICK, true);
+                }
                 
-                // 上方向への推進力を適用
+                // 上方向への推進力を適用（クライアントとサーバー両方で実行）
                 if (player.motionY < MAX_VERTICAL_SPEED) {
                     player.motionY += JETPACK_THRUST;
                     if (player.motionY > MAX_VERTICAL_SPEED) {
@@ -237,12 +234,23 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
                     }
                 }
                 
+                // 重力の影響を軽減
+                if (player.motionY < 0) {
+                    player.motionY *= 0.9;
+                }
+                
                 // 落下ダメージをリセット
                 player.fallDistance = 0;
                 
-                // パーティクル効果を表示（サーバー側からクライアントに送信）
-                world.spawnParticle("smoke", player.posX, player.posY, player.posZ, 0, -0.5, 0);
-                world.spawnParticle("flame", player.posX, player.posY, player.posZ, 0, -0.1, 0);
+                if (!world.isRemote) {
+                    // パーティクル効果を表示（サーバー側）
+                    for (int i = 0; i < 3; i++) {
+                        double offsetX = player.posX + (player.getRNG().nextDouble() - 0.5) * 0.5;
+                        double offsetZ = player.posZ + (player.getRNG().nextDouble() - 0.5) * 0.5;
+                        world.spawnParticle("smoke", offsetX, player.posY - 0.5, offsetZ, 0, -0.1, 0);
+                        world.spawnParticle("flame", offsetX, player.posY - 0.5, offsetZ, 0, -0.05, 0);
+                    }
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.pluslatte.gt6gears.event;
 
+import com.pluslatte.gt6gears.ProxyClient;
 import com.pluslatte.gt6gears.item.ItemGravityRegulator;
 import com.pluslatte.gt6gears.item.ItemJetpackTank;
 import com.pluslatte.gt6gears.network.PacketHandler;
@@ -20,9 +21,6 @@ import org.lwjgl.input.Keyboard;
 public class KeyInputHandler {
     
     private boolean wasJumping = false;
-    
-    // キーバインディングの定義（例: Gキー）
-    private static final int TOGGLE_KEY = Keyboard.KEY_G;
     private boolean wasToggleKeyPressed = false;
     
     @SubscribeEvent
@@ -70,8 +68,9 @@ public class KeyInputHandler {
     }
     
     private void handleGravityRegulator(EntityPlayer player) {
-        // Gキーが押されたかチェック
-        boolean isToggleKeyPressed = Keyboard.isKeyDown(TOGGLE_KEY);
+        // 登録されたキーバインディングの状態をチェック
+        boolean isToggleKeyPressed = ProxyClient.keyGravityToggle != null && 
+                                     ProxyClient.keyGravityToggle.getIsKeyPressed();
         
         // キーが新しく押された瞬間のみトグル
         if (isToggleKeyPressed && !wasToggleKeyPressed) {

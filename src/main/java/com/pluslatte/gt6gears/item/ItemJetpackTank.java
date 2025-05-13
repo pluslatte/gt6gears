@@ -39,9 +39,9 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
                 "P P",
                 "TBT",
                 "PTP",
-                'P', plateCurved.dat(MT.Al),
-                'T', pipeMedium.dat(MT.Ti),
-                'B', Items.iron_chestplate
+                'P', plateCurved.dat(MT.Steel),
+                'T', pipeMedium.dat(MT.Steel),
+                'B', Items.leather_chestplate
             );
         setCreativeTab(Gt6Gears.CREATIVE_TAB);
         setMaxStackSize(1);

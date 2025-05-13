@@ -3,6 +3,7 @@ package com.pluslatte.gt6gears.item;
 import com.pluslatte.gt6gears.Gt6Gears;
 import com.pluslatte.gt6gears.ProxyClient;
 import com.pluslatte.gt6gears.ProxyCommon;
+import com.pluslatte.gt6gears.item.ability.GravityRegulatorAbilityHandler;
 import gregapi.code.TagData;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -120,12 +121,13 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
             
             if (energy >= ENERGY_PER_TICK) {
                 // エネルギーがある場合
-                if (!player.capabilities.allowFlying) {
+                boolean hasFlightAbility = GravityRegulatorAbilityHandler.hasFlightAbility(player);
+                
+                if (!hasFlightAbility) {
                     // 飛行を有効化（起動コストを消費）
                     if (energy >= ACTIVATION_COST) {
                         setEnergyStored(TD.Energy.EU, stack, energy - ACTIVATION_COST);
-                        player.capabilities.allowFlying = true;
-                        player.sendPlayerAbilities();
+                        // AbilityHandlerが飛行能力を管理する
                     } else {
                         // 起動コストが足りない場合は無効化
                         nbt.setBoolean("FlightEnabled", false);
@@ -139,23 +141,13 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
                 player.fallDistance = 0;
             } else {
                 // エネルギーがない場合は飛行を無効化
-                if (player.capabilities.allowFlying && !player.capabilities.isCreativeMode) {
-                    player.capabilities.allowFlying = false;
-                    player.capabilities.isFlying = false;
-                    player.sendPlayerAbilities();
-                    nbt.setBoolean("FlightEnabled", false);
-                    
-                    // エネルギー切れは自己責任、保護なし
-                }
-            }
-        } else {
-            // 飛行が無効な場合
-            if (player.capabilities.allowFlying && !player.capabilities.isCreativeMode) {
-                player.capabilities.allowFlying = false;
-                player.capabilities.isFlying = false;
-                player.sendPlayerAbilities();
+                nbt.setBoolean("FlightEnabled", false);
             }
         }
+        
+        // エネルギー消費の管理をAbilityHandlerに委譲
+        GravityRegulatorAbilityHandler.handleEnergyConsumption(stack, player, 
+                getEnergyStored(TD.Energy.EU, stack), ACTIVATION_COST, ENERGY_PER_TICK);
     }
     
     // 装備を外したときの処理（ItemArmorBaseには存在しない可能性があるのでコメントアウト）

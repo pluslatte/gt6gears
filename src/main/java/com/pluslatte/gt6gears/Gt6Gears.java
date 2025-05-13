@@ -3,6 +3,7 @@ package com.pluslatte.gt6gears;
 import com.pluslatte.gt6gears.item.ItemMechanicalBoots;
 import com.pluslatte.gt6gears.item.ItemJetpackTank;
 import com.pluslatte.gt6gears.item.ItemGravityRegulator;
+import com.pluslatte.gt6gears.item.ability.GravityRegulatorAbilityHandler;
 import cpw.mods.fml.common.event.*;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
@@ -12,6 +13,7 @@ import net.minecraft.init.Blocks;
 import cpw.mods.fml.common.Mod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = Gt6Gears.MODID, version = Gt6Gears.VERSION)
 public final class Gt6Gears extends Abstract_Mod
@@ -82,6 +84,9 @@ public final class Gt6Gears extends Abstract_Mod
     public void onModInit2(FMLInitializationEvent aEvent) {
         // some example code
         System.out.println("DIRT BLOCK >> "+Blocks.dirt.getUnlocalizedName());
+        
+        // Gravity Regulator のイベントハンドラーを登録
+        MinecraftForge.EVENT_BUS.register(new GravityRegulatorAbilityHandler());
     }
 
     @Override

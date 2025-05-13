@@ -27,7 +27,7 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
                 Gt6Gears.MODID,
                 "gt6gears.jetpacktank",
                 "Liquid Fuel Jetpack",
-                "Jetpack with a liquid fuel storage.",
+                "Fill or empty this by using taps or funnels with some fluid storages.",
                 "jetpack_tank",
                 1, // 胴体装備（chestplate）
                 new int[] {3, 6, 5, 2}, // 防御値（頭、胴、脚、足）
@@ -84,6 +84,11 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
     @Override
     public int fill(ItemStack container, FluidStack resource, boolean doFill) {
         if (resource == null) {
+            return 0;
+        }
+        
+        // 燃料のみを受け入れる
+        if (!isUsableFuel(resource)) {
             return 0;
         }
         
@@ -173,5 +178,22 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
         }
         
         return stack;
+    }
+    
+    /**
+     * 指定された液体が使用可能な燃料かどうかを判定する
+     * @param fluid 判定する液体
+     * @return 使用可能な燃料の場合true
+     */
+    private boolean isUsableFuel(FluidStack fluid) {
+        if (fluid == null || fluid.getFluid() == null) {
+            return false;
+        }
+        
+        // GregTech6の燃料定義をチェック
+        return FL.Fuel.is(fluid) ||
+                FL.Diesel.is(fluid) ||
+                FL.Kerosine.is(fluid) ||
+                FL.Petrol.is(fluid);
     }
 }

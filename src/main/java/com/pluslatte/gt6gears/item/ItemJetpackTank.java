@@ -1,6 +1,7 @@
 package com.pluslatte.gt6gears.item;
 
 import com.pluslatte.gt6gears.Gt6Gears;
+import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.item.ItemArmorBase;
 import gregapi.data.FL;
@@ -8,14 +9,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.world.World;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
-import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.List;
 
@@ -24,14 +19,14 @@ import static gregapi.data.OP.*;
 public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerItem {
     
     // タンク容量（mB単位）
-    private static final int TANK_CAPACITY = 16000; // 16バケツ分
-    
+    private static final int TANK_CAPACITY = 16000; // 16バケツ分（16000mB）
+
     public ItemJetpackTank() {
         super(
                 Gt6Gears.MODID,
                 "gt6gears.jetpacktank",
                 "Liquid Fuel Jetpack",
-                "Fill or empty this by using taps or funnels with some fluid storages.",
+                "Allows flying.",
                 "jetpack_tank",
                 1, // 胴体装備（chestplate）
                 new int[] {3, 6, 5, 2}, // 防御値（頭、胴、脚、足）
@@ -52,22 +47,17 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
     }
     
     @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        super.onArmorTick(world, player, itemStack);
-        // ジェットパック機能は後で実装予定
-    }
-    
-    @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean advanced) {
         super.addInformation(stack, player, list, advanced);
-        
+
+        list.add(LH.Chat.WHITE + "Fill or empty this by using taps or funnels with some fluid storages.");
         FluidStack fluid = getFluid(stack);
         if (fluid != null && fluid.amount > 0) {
-            list.add(EnumChatFormatting.AQUA + "Contains: " + fluid.getLocalizedName());
-            list.add(EnumChatFormatting.WHITE + "" + fluid.amount + " / " + getCapacity(stack) + " mB");
+            list.add(LH.Chat.CYAN + "Contains: " + fluid.getLocalizedName());
+            list.add(LH.Chat.WHITE + fluid.amount + " / " + getCapacity(stack) + " mB");
         } else {
-            list.add(EnumChatFormatting.RED + "Empty");
-            list.add(EnumChatFormatting.WHITE + "0 / " + getCapacity(stack) + " mB");
+            list.add(LH.Chat.RED + "Empty");
+            list.add(LH.Chat.WHITE + "0 / " + getCapacity(stack) + " mB");
         }
     }
     

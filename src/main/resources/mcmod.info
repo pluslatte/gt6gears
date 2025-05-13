@@ -1,16 +1,16 @@
 [
 {
   "modid": "gt6gears",
-  "name": "Gt6Gears",
-  "description": "jetpack and boots",
+  "name": "GT6 Gears",
+  "description": "Adds advanced armor and equipment for GregTech 6, including jetpacks, gravity regulators, and mechanical boots.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["pluslatte"],
-  "credits": "anatawa12",
+  "credits": "GregoriusT (for creating GregTech 6), anatawa12 (for maintaining the project template and infrastructure)",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": ["required-after:gregtech@[6.17.03,)"]
 }
 ]

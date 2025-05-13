@@ -34,6 +34,7 @@ public class ItemMechanicalBoots extends ItemArmorBase {
                 'B', Items.iron_boots
             );
         setCreativeTab(Gt6Gears.CREATIVE_TAB);
+        setMaxStackSize(1);
     }
 
     @Override

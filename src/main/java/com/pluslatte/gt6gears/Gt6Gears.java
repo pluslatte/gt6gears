@@ -1,6 +1,7 @@
 package com.pluslatte.gt6gears;
 
 import com.pluslatte.gt6gears.item.ItemMechanicalBoots;
+import com.pluslatte.gt6gears.item.ItemJetpackTank;
 import cpw.mods.fml.common.event.*;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
@@ -22,6 +23,7 @@ public final class Gt6Gears extends Abstract_Mod
     public static CreativeTabs CREATIVE_TAB;
 
     public static ItemMechanicalBoots itemMechanicalBoots;
+    public static ItemJetpackTank itemJetpackTank;
 
     @cpw.mods.fml.common.SidedProxy(modId = MODID, clientSide = "com.pluslatte.gt6gears.ProxyCommon", serverSide = "com.pluslatte.gt6gears.ProxyCommon")
     public static Abstract_Proxy PROXY;
@@ -70,6 +72,7 @@ public final class Gt6Gears extends Abstract_Mod
         };
 
         itemMechanicalBoots = new ItemMechanicalBoots();
+        itemJetpackTank = new ItemJetpackTank();
     }
 
     @Override

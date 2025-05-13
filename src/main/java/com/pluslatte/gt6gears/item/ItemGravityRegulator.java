@@ -38,6 +38,9 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
     private static final long ACTIVATION_COST = 10000L; // 起動コスト: 10,000 EU
     private static final long ENERGY_PER_TICK = 50L; // 維持コスト: 50 EU/tick
     
+    // NBTタグ名の定数
+    private static final String NBT_GRAVITY_REGULATOR_FLIGHT = "GravityRegulatorFlight";
+    
     public ItemGravityRegulator() {
         super(
                 Gt6Gears.MODID,
@@ -114,6 +117,11 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
                     if (energy >= ACTIVATION_COST) {
                         setEnergyStored(TD.Energy.EU, stack, energy - ACTIVATION_COST);
                         player.capabilities.allowFlying = true;
+                        
+                        // プレイヤーのNBTにgravity regulator由来の飛行フラグを設定
+                        NBTTagCompound playerData = player.getEntityData();
+                        playerData.setBoolean(NBT_GRAVITY_REGULATOR_FLIGHT, true);
+                        
                         player.sendPlayerAbilities();
                     } else {
                         // 起動コストが足りない場合は無効化
@@ -128,6 +136,10 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
                 if (player.capabilities.allowFlying && !player.capabilities.isCreativeMode) {
                     player.capabilities.allowFlying = false;
                     player.capabilities.isFlying = false;
+                    
+                    // プレイヤーのNBTからgravity regulator由来の飛行フラグを削除
+                    player.getEntityData().removeTag(NBT_GRAVITY_REGULATOR_FLIGHT);
+                    
                     player.sendPlayerAbilities();
                     nbt.setBoolean("FlightEnabled", false);
                 }
@@ -137,6 +149,10 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
             if (player.capabilities.allowFlying && !player.capabilities.isCreativeMode) {
                 player.capabilities.allowFlying = false;
                 player.capabilities.isFlying = false;
+                
+                // プレイヤーのNBTからgravity regulator由来の飛行フラグを削除
+                player.getEntityData().removeTag(NBT_GRAVITY_REGULATOR_FLIGHT);
+                
                 player.sendPlayerAbilities();
             }
         }

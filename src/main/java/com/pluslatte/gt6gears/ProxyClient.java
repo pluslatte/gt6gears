@@ -12,6 +12,7 @@ import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import org.lwjgl.input.Keyboard;
@@ -52,6 +53,7 @@ public class ProxyClient extends Abstract_Proxy {
     public void onPlayerTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer player = event.player;
 
+        // gravity regulatorが装備されていない場合、gravity regulator由来の飛行のみを解除
         if (
             (
                 player.getEquipmentInSlot(3) == null ||
@@ -60,8 +62,13 @@ public class ProxyClient extends Abstract_Proxy {
             && !player.capabilities.isCreativeMode
             && player.capabilities.allowFlying
         ) {
-            player.capabilities.allowFlying = false;
-            player.capabilities.isFlying = false;
+            // プレイヤーのNBTをチェックして、gravity regulator由来の飛行かどうか確認
+            NBTTagCompound playerData = player.getEntityData();
+            if (playerData.hasKey("GravityRegulatorFlight") && playerData.getBoolean("GravityRegulatorFlight")) {
+                player.capabilities.allowFlying = false;
+                player.capabilities.isFlying = false;
+                playerData.removeTag("GravityRegulatorFlight");
+            }
         }
 
         if (player.getEquipmentInSlot(1) == null) {

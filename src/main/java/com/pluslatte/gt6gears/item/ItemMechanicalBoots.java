@@ -8,12 +8,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import java.util.UUID;
-
 import static gregapi.data.OP.*;
 
-public class ItemSpeedBoots extends ItemArmorBase {
-    public ItemSpeedBoots() {
+public class ItemMechanicalBoots extends ItemArmorBase {
+    public ItemMechanicalBoots() {
         super(
                 Gt6Gears.MODID,
                 "gt6gears.mechanicalboots",
@@ -44,8 +42,8 @@ public class ItemSpeedBoots extends ItemArmorBase {
 
         if (player.onGround) {
                 // 移動速度向上
-                player.motionX *= 1.3;
-                player.motionZ *= 1.3;
+                player.motionX *= 1.2;
+                player.motionZ *= 1.2;
         }
     }
 }

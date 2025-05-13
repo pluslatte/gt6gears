@@ -1,7 +1,7 @@
 [
 {
-  "modid": "gtgear",
-  "name": "GtGear",
+  "modid": "gt6gears",
+  "name": "Gt6Gears",
   "description": "jetpack and boots",
   "version": "${version}",
   "mcversion": "${mcversion}",

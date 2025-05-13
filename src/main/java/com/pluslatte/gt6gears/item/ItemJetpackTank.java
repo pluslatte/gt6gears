@@ -10,8 +10,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
+import net.minecraftforge.fluids.IFluidHandler;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import java.util.List;
 
@@ -130,6 +134,7 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
         NBTTagCompound fluidTag = container.stackTagCompound.getCompoundTag("Fluid");
         FluidStack stack = FluidStack.loadFluidStackFromNBT(fluidTag);
         
+        // 既に別の燃料が入っている場合は拒否
         if (!stack.isFluidEqual(resource)) {
             return 0;
         }
@@ -159,24 +164,30 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
             return null;
         }
         
-        stack.amount = Math.min(stack.amount, maxDrain);
+        // ドレインする量を計算（最大値を超えないように）
+        int drainAmount = Math.min(stack.amount, maxDrain);
         
-        if (doDrain) {
-            if (maxDrain >= stack.amount) {
+        // 実際にドレインする場合のみNBTを更新
+        if (doDrain && drainAmount > 0) {
+            NBTTagCompound fluidTag = container.stackTagCompound.getCompoundTag("Fluid");
+            int remainingAmount = stack.amount - drainAmount;
+            
+            if (remainingAmount <= 0) {
+                // 完全に空になった場合
                 container.stackTagCompound.removeTag("Fluid");
                 
                 if (container.stackTagCompound.hasNoTags()) {
                     container.stackTagCompound = null;
                 }
-                
-                return stack;
+            } else {
+                // まだ液体が残っている場合
+                fluidTag.setInteger("Amount", remainingAmount);
+                container.stackTagCompound.setTag("Fluid", fluidTag);
             }
-            
-            NBTTagCompound fluidTag = container.stackTagCompound.getCompoundTag("Fluid");
-            fluidTag.setInteger("Amount", fluidTag.getInteger("Amount") - stack.amount);
-            container.stackTagCompound.setTag("Fluid", fluidTag);
         }
         
+        // ドレインされる液体を返す（amountは実際にドレインされる量に設定）
+        stack.amount = drainAmount;
         return stack;
     }
     

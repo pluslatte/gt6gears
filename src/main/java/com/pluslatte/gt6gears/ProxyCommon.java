@@ -55,4 +55,8 @@ public final class ProxyCommon extends Abstract_Proxy {
             player.motionY += 0.333F;
         }
     }
+    
+    public String getKeyBinding() {
+        return "Key Binding";
+    }
 }

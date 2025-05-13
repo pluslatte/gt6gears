@@ -19,5 +19,13 @@ public class PacketHandler {
             id++,
             Side.SERVER
         );
+        
+        // Gravity Regulatorのトグル状態を送信するパケット
+        INSTANCE.registerMessage(
+            PacketGravityRegulatorToggle.Handler.class,
+            PacketGravityRegulatorToggle.class,
+            id++,
+            Side.SERVER
+        );
     }
 }

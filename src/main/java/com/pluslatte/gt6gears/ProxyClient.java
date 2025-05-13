@@ -57,4 +57,8 @@ public class ProxyClient extends Abstract_Proxy {
             player.motionY += 0.333F;
         }
     }
+    
+    public String getKeyBinding() {
+        return "G";
+    }
 }

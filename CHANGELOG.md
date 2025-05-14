@@ -27,4 +27,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GregoriusT (GregTech6 creator)
 - anatawa12 (Project template and infrastructure)
 
-[1.0.0]: https://github.com/yourusername/gt6gears/releases/tag/v1.0.0
+[1.0.0]: https://github.com/pluslatte/gt6gears/releases/tag/v1.0.0

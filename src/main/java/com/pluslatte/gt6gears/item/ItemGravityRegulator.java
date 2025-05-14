@@ -10,17 +10,12 @@ import gregapi.data.MT;
 import gregapi.data.TD;
 import gregapi.item.IItemEnergy;
 import gregapi.item.ItemArmorBase;
-import gregapi.oredict.OreDictItemData;
-import gregapi.util.OM;
-import gregapi.util.ST;
 import gregapi.util.UT;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import java.util.Collection;

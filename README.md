@@ -1,37 +1,59 @@
-# anatawa12's ForgeGradle 1.2 fork for Gradle 4.4.1+ - example project
+# GT6 Gears
 
-This is an example mod using the [fork of ForgeGradle-1.2 made by anatawa12](https://github.com/anatawa12/ForgeGradle-1.2).
-This fork supports Gradle 4.4.1 and later. This example project uses Gradle 5.6.4.
+GT6 Gears adds advanced armor and equipment for GregTech 6, including jetpacks, gravity regulators, and mechanical boots.
 
-## How to use this example project
+## Features
 
-You can download this example project from [here](https://github.com/anatawa12/ForgeGradle-example/archive/master.zip), or use it as a template on Github.
-This project can be used as a replacement for Forge's 1.7.10 MDK.
+- **Mechanical Boots**: Provides jump boost and convenient 1-block stepping
+- **Jetpack Tank**: Flight capability with fuel consumption
+- **Gravity Regulator**: Control gravity to do Creative fly
 
-## How to replace ForgeGradle 1.2. with anatawa12's fork
-Although this example project has some differences to Forge's 1.7.10 MDK, anatawa12's fork of ForgeGradle 1.2 can be used by most projects with only minimal changes to their Gradle build script.
+## Requirements
 
-Here is a list of changes to Forge's 1.7.10 MDK Gradle build script, to replace the official ForgeGradle 1.2 plugin with the fork. These changes are likely to work with most projects based on Forge's 1.7.10 MDK.
+- Minecraft 1.7.10
+- Forge 10.13.4.1614
+- GregTech 6.17.03 or higher
 
-In the repositories block of the buildscript section, add jcenter, and switch the Forge maven to use HTTPS instead of HTTP:
-```diff
-     repositories {
-         mavenCentral()
-         maven {
-             name = "forge"
--            url = "http://files.minecraftforge.net/maven"
-+            url = "https://maven.minecraftforge.net/"
-         }
+## Installation
+
+1. Install the required dependencies
+2. Download the latest release from [Releases](../../releases)
+3. Place the jar file in your mods folder
+4. Launch Minecraft
+
+## Usage
+
+- All items have crafting recipes integrated with GregTech's system
+- For Gravity Regulator, press `G` (default) to toggle on/off
+
+## Development
+
+This project uses [anatawa12's ForgeGradle 1.2 fork](https://github.com/anatawa12/ForgeGradle-1.2).
+
+To set up development environment:
+```bash
+git clone https://github.com/pluslatte/gt6gears.git
+cd gt6gears
+./gradlew setupDecompWorkspace
 ```
 
-Also in the dependencies block of the buildscript section, change the dependency on Forge's official ForgeGradle 1.2 to the fork:
-```diff
-     dependencies {
--        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') {
-+            changing = true
-+        }
-     }
+## Building
+
+```bash
+./gradlew build
 ```
 
-The Gradle wrapper should also be changed to use Gradle 4.4.1 or higher. <!--Currently, the plugin [does not support Gradle 6.x](https://github.com/anatawa12/ForgeGradle-1.2/issues/9), although this may change in the future. As such, the latest version of Gradle this plugin supports is Gradle 5.6.4.-->
+Built files will be in `build/libs/`
+
+## License
+
+MIT License
+
+## Credits
+
+- [GregoriusT](https://github.com/GregoriusT) - GregTech 6
+- [anatawa12](https://github.com/anatawa12) - ForgeGradle fork and project template
+
+## Change Log
+
+See [CHANGELOG.md](CHANGELOG.md) for version history.

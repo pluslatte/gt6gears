@@ -20,7 +20,7 @@ import static gregapi.data.OP.*;
 public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerItem {
     
     // タンク容量（mB単位）
-    private static final int TANK_CAPACITY = 24000; // 14バケツ分（24000mB）
+    private static final int TANK_CAPACITY = 64000; // 64バケツ分（64000mB）
 
     public ItemJetpackTank() {
         super(
@@ -33,7 +33,7 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
                 new int[] {0, 6, 0, 0}, // 防御値6（ダイヤモンド胸当ての8より低く、鉄の6と同等）
                 336, // 耐久値を鉄240とダイヤ528の中間に設定
                 12, // エンチャント性を鉄とダイヤの中間に
-                15, // 防具強度を中間的な値に
+                15, // 防具強度
                 false,
                 false
                 // レシピを後で登録するため、ここでは指定しない

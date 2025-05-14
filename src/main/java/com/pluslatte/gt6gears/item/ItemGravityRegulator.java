@@ -28,7 +28,7 @@ import static gregapi.data.OP.*;
 public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
     
     // エネルギー関連の定数
-    private static final long ENERGY_CAPACITY = 8192000L; // 最大容量: 8,192,000 EU
+    private static final long ENERGY_CAPACITY = 32768000L; // 最大容量: 32,768,000 EU
     private static final long ENERGY_SIZE_IN = 2048L; // 入力サイズ: 2048 EU/t
     private static final long ENERGY_SIZE_OUT = 2048L; // 出力サイズ: 2048 EU/t
     private static final long ACTIVATION_COST = 10000L; // 起動コスト: 10,000 EU
@@ -45,7 +45,7 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
                 new int[] {0, 8, 0, 0}, // 防御値8（ダイヤモンド胸当てと同等）
                 0, // 耐久値0 = 耐久無制限（壊れない）
                 20, // エンチャント性をダイヤモンドより高く
-                25, // 防具強度を高めに設定
+                25, // 防具強度
                 false,
                 false
                 // レシピを後で登録するため、ここでは指定しない

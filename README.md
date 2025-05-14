@@ -17,7 +17,7 @@ GT6 Gears adds advanced armor and equipment for GregTech 6, including jetpacks, 
 ## Installation
 
 1. Install the required dependencies
-2. Download the latest release from [Releases](../../releases)
+2. Download the latest release
 3. Place the jar file in your mods folder
 4. Launch Minecraft
 
@@ -44,10 +44,6 @@ cd gt6gears
 ```
 
 Built files will be in `build/libs/`
-
-## License
-
-MIT License
 
 ## Credits
 

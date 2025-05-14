@@ -1,6 +1,5 @@
 package com.pluslatte.gt6gears;
 
-import com.pluslatte.gt6gears.event.KeyInputHandler;
 import com.pluslatte.gt6gears.network.PacketHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -17,23 +16,21 @@ public final class ProxyCommon extends Abstract_Proxy {
     // Insert your Serverside-only implementation of Stuff here
     @Override
     public void onProxyAfterPostInit(Abstract_Mod aMod, FMLPostInitializationEvent aEvent) {
-        System.out.println("####################EVENT REG####################");
+        System.out.println("####################EVENT REG (SERVER)####################");
         MinecraftForge.EVENT_BUS.register(this);
         FMLCommonHandler.instance().bus().register(this);
         
         // パケットハンドラーの初期化
         PacketHandler.init();
-
-        // サーバー側のイベントハンドラーを登録
-        KeyInputHandler keyHandler = new KeyInputHandler();
-        FMLCommonHandler.instance().bus().register(keyHandler);
-        //this allows it to read game events for other classes without having to be added unnecessarily to all the game building events.
+        
+        // KeyInputHandlerはクライアント専用なので、ここでは登録しない
     }
 
     @SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer player = event.player;
 
+        // Mechanical Bootsの処理
         if (player.getEquipmentInSlot(1) == null) {
             player.stepHeight = 0.5F;
             return;
@@ -58,9 +55,5 @@ public final class ProxyCommon extends Abstract_Proxy {
         if (player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBoots) {
             player.motionY += 0.333F;
         }
-    }
-    
-    public String getKeyBinding() {
-        return "Key Binding";
     }
 }

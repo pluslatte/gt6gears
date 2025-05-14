@@ -52,6 +52,7 @@ public class ProxyClient extends Abstract_Proxy {
     public void onPlayerTick(TickEvent.PlayerTickEvent event) {
         EntityPlayer player = event.player;
 
+        // Gravity Regulatorの飛行能力チェック（クライアントサイド）
         if (
             (
                 player.getEquipmentInSlot(3) == null ||
@@ -64,6 +65,7 @@ public class ProxyClient extends Abstract_Proxy {
             player.capabilities.isFlying = false;
         }
 
+        // Mechanical Bootsの処理
         if (player.getEquipmentInSlot(1) == null) {
             player.stepHeight = 0.5F;
             return;
@@ -89,7 +91,7 @@ public class ProxyClient extends Abstract_Proxy {
             player.motionY += 0.333F;
         }
     }
-    
+
     public String getKeyBinding() {
         return keyGravityToggle != null ? 
             net.minecraft.client.settings.GameSettings.getKeyDisplayString(keyGravityToggle.getKeyCode()) : 

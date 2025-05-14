@@ -2,7 +2,6 @@ package com.pluslatte.gt6gears.item;
 
 import com.pluslatte.gt6gears.Gt6Gears;
 import com.pluslatte.gt6gears.ProxyClient;
-import com.pluslatte.gt6gears.ProxyCommon;
 import com.pluslatte.gt6gears.item.ability.GravityRegulatorAbilityHandler;
 import gregapi.code.TagData;
 import gregapi.data.IL;
@@ -90,14 +89,15 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
         list.add(LH.Chat.WHITE + "Flight: " + (isEnabled ? LH.Chat.GREEN + "Enabled" : LH.Chat.RED + "Disabled"));
         
         // 使用方法
-        String keyBind = "G"; // デフォルト値
         if (Gt6Gears.PROXY instanceof ProxyClient) {
-            keyBind = ((ProxyClient)Gt6Gears.PROXY).getKeyBinding();
-        } else if (Gt6Gears.PROXY instanceof ProxyCommon) {
-            keyBind = ((ProxyCommon)Gt6Gears.PROXY).getKeyBinding();
+            String keyBind = ((ProxyClient)Gt6Gears.PROXY).getKeyBinding();
+            list.add(LH.Chat.CYAN + "Press " + LH.Chat.YELLOW + keyBind +
+                     LH.Chat.CYAN + " to toggle flight mode");
+        } else {
+            // サーバーサイドまたはクライアントプロキシが利用できない場合
+            list.add(LH.Chat.CYAN + "Press " + LH.Chat.YELLOW + "G" +
+                     LH.Chat.CYAN + " to toggle flight mode");
         }
-        list.add(LH.Chat.CYAN + "Press " + LH.Chat.YELLOW + keyBind +
-                 LH.Chat.CYAN + " to toggle flight mode");
         list.add(LH.Chat.WHITE + "Fall damage protection: " + (isEnabled ? LH.Chat.GREEN + "Enabled" : LH.Chat.RED + "Disabled"));
     }
     

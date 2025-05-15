@@ -5,7 +5,7 @@ All notable changes to GT6 Gears will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.2] - 2025-05-16
+## [1.1.0] - 2025-05-16
 
 ### Added
 - TungstenSteel Mechanical Boots with 10x durability
@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Further balance adjustment for Mechanical Boots jump height
 
-[1.0.2]: https://github.com/pluslatte/gt6gears/releases/tag/v1.0.2
+[1.1.0]: https://github.com/pluslatte/gt6gears/releases/tag/v1.1.0
 
 ## [1.0.1] - 2025-05-15
 

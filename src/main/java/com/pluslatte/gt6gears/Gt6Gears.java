@@ -26,6 +26,7 @@ public final class Gt6Gears extends Abstract_Mod
     public static CreativeTabs CREATIVE_TAB;
 
     public static ItemMechanicalBoots itemMechanicalBoots;
+    public static ItemMechanicalBoots itemMechanicalBootsTs;
     public static ItemJetpackTank itemJetpackTank;
     public static ItemGravityRegulator itemGravityRegulator;
 
@@ -75,16 +76,14 @@ public final class Gt6Gears extends Abstract_Mod
             }
         };
 
-        itemMechanicalBoots = new ItemMechanicalBoots();
+        itemMechanicalBoots = new ItemMechanicalBoots(false);
+        itemMechanicalBootsTs = new ItemMechanicalBoots(true);
         itemJetpackTank = new ItemJetpackTank();
         itemGravityRegulator = new ItemGravityRegulator();
     }
 
     @Override
     public void onModInit2(FMLInitializationEvent aEvent) {
-        // some example code
-        System.out.println("DIRT BLOCK >> "+Blocks.dirt.getUnlocalizedName());
-        
         // Gravity Regulator のイベントハンドラーを登録
         MinecraftForge.EVENT_BUS.register(new GravityRegulatorAbilityHandler());
     }
@@ -93,6 +92,7 @@ public final class Gt6Gears extends Abstract_Mod
     public void onModPostInit2(FMLPostInitializationEvent aEvent) {
         // 後の初期化段階ですべてのアイテムのレシピを登録
         ItemMechanicalBoots.registerRecipe();
+        ItemMechanicalBoots.registerRecipeTungstenSteel();
         ItemJetpackTank.registerRecipe();
         ItemGravityRegulator.registerRecipe();
     }

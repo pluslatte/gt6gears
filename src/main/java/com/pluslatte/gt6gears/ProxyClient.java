@@ -70,7 +70,10 @@ public class ProxyClient extends Abstract_Proxy {
             player.stepHeight = 0.5F;
             return;
         }
-        if (player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBoots) {
+        if (
+            player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBoots ||
+            player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBootsTs
+        ) {
             player.stepHeight = 1.0F;
         } else {
             player.stepHeight = 0.5F;
@@ -87,8 +90,11 @@ public class ProxyClient extends Abstract_Proxy {
         if (player.getEquipmentInSlot(1) == null) {
             return;
         }
-        if (player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBoots) {
-            player.motionY += 0.222F;
+        if (
+            player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBoots ||
+            player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBootsTs
+        ) {
+            player.motionY += 0.2F;
         }
     }
 

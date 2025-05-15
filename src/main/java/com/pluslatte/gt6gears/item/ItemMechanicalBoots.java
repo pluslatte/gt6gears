@@ -11,17 +11,17 @@ import net.minecraft.world.World;
 import static gregapi.data.OP.*;
 
 public class ItemMechanicalBoots extends ItemArmorBase {
-    public ItemMechanicalBoots() {
+    public ItemMechanicalBoots(boolean isTungstenSteel) {
         super(
                 Gt6Gears.MODID,
-                "gt6gears.mechanicalboots",
-                "Mechanical Boots",
+                isTungstenSteel ? "gt6gears.mechanicalbootstungsteel" : "gt6gears.mechanicalboots",
+                isTungstenSteel ? "TungstenSteel Reinforced Mechanical Boots" : "Mechanical Boots",
                 "Assists walking.",
-                "mechanical_boots",
+                isTungstenSteel ? "mechanical_boots_ts" : "mechanical_boots",
                 3, // 足装備
                 new int[] {0, 0, 0, 3}, // 足装備の防御値を3に（鉄のブーツ2より少し高い）
-                234, // 耐久値を鉄のブーツ195の1.2倍（コスト分高く）
-                12, // エンチャント性を鉄より少し高く
+                isTungstenSteel ? 2340 : 234, // 耐久値を鉄のブーツ195の1.2倍（コスト分高く）タングステンスチール製の場合はその 10 倍に
+                isTungstenSteel ? 16 : 12, // エンチャント性を鉄より少し高く
                 10, // 防具強度
                 false,
                 false
@@ -43,6 +43,21 @@ public class ItemMechanicalBoots extends ItemArmorBase {
             'C', plateCurved.dat(MT.Fe),
             'S', spring.dat(MT.Fe),
             'B', Items.iron_boots
+        );
+    }
+
+    public static void registerRecipeTungstenSteel() {
+        // レシピを手動で登録
+        gregapi.util.CR.shaped(
+                gregapi.util.ST.make(Gt6Gears.itemMechanicalBootsTs, 1, 0),
+                gregapi.util.CR.DEF_REV_NCC,
+                "G G",
+                "C C",
+                "SBS",
+                'G', gearGtSmall.dat(MT.TungstenSteel),
+                'C', plateCurved.dat(MT.TungstenSteel),
+                'S', spring.dat(MT.TungstenSteel),
+                'B', Items.iron_boots
         );
     }
 

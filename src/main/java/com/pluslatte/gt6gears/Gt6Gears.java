@@ -20,7 +20,7 @@ public final class Gt6Gears extends Abstract_Mod
 {
     public static final String MODID = "gt6gears";
     public static final String MODNAME = "gt6 gears";
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.0.1";
     public static ModData MOD_DATA = new ModData(MODID, MODNAME);
 
     public static CreativeTabs CREATIVE_TAB;

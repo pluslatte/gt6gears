@@ -1,6 +1,6 @@
 # GT6 Gears
 
-GT6 Gears adds advanced armor and equipment for GregTech 6, including jetpacks, gravity regulators, and mechanical boots.
+GT6 Gears adds equipment for GregTech 6, including jetpacks, gravity regulators, and mechanical boots.
 
 ## Features
 

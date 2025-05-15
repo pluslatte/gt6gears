@@ -2,7 +2,7 @@
 {
   "modid": "gt6gears",
   "name": "GT6 Gears",
-  "description": "Adds advanced armor and equipment for GregTech 6, including jetpacks, gravity regulators, and mechanical boots.",
+  "description": "Adds equipment for GregTech 6, including jetpacks, gravity regulators, and mechanical boots.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",

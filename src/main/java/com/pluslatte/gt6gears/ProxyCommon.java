@@ -53,7 +53,7 @@ public final class ProxyCommon extends Abstract_Proxy {
             return;
         }
         if (player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBoots) {
-            player.motionY += 0.333F;
+            player.motionY += 0.222F;
         }
     }
 }

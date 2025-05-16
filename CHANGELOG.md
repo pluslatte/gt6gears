@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - Unnecessary tooltip line of Gravity Regulator
 
+[1.1.1]: https://github.com/pluslatte/gt6gears/releases/tag/v1.1.1
+
 ## [1.1.0] - 2025-05-16
 
 ### Added

@@ -227,9 +227,9 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
         }
         
         if (isJumping) {
-            // 燃料があり、ジャンプキーが押されている場合
-            
             if (fuel.amount >= FUEL_CONSUMPTION_PER_TICK) {
+                // 燃料があり、ジャンプキーが押されている場合
+
                 if (!world.isRemote) {
                     // サーバー側でのみ燃料を消費
                     drain(itemStack, FUEL_CONSUMPTION_PER_TICK, true);
@@ -251,14 +251,12 @@ public class ItemJetpackTank extends ItemArmorBase implements IFluidContainerIte
                 // 落下ダメージをリセット
                 player.fallDistance = 0;
                 
-                if (!world.isRemote) {
-                    // パーティクル効果を表示（サーバー側）
-                    for (int i = 0; i < 3; i++) {
-                        double offsetX = player.posX + (player.getRNG().nextDouble() - 0.5) * 0.5;
-                        double offsetZ = player.posZ + (player.getRNG().nextDouble() - 0.5) * 0.5;
-                        world.spawnParticle("smoke", offsetX, player.posY - 0.5, offsetZ, 0, -0.1, 0);
-                        world.spawnParticle("flame", offsetX, player.posY - 0.5, offsetZ, 0, -0.05, 0);
-                    }
+                // パーティクル効果を表示（サーバー側）
+                for (int i = 0; i < 2; i++) {
+                    double offsetX = player.posX + (player.getRNG().nextDouble() - 0.5) * 0.5;
+                    double offsetZ = player.posZ + (player.getRNG().nextDouble() - 0.5) * 0.5;
+                    world.spawnParticle("smoke", offsetX, player.posY - 0.5, offsetZ, 0, -0.1, 0);
+                    world.spawnParticle("flame", offsetX, player.posY - 0.5, offsetZ, 0, -0.05, 0);
                 }
             }
         }

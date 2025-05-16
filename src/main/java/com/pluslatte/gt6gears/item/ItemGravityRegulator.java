@@ -93,7 +93,6 @@ public class ItemGravityRegulator extends ItemArmorBase implements IItemEnergy {
             list.add(LH.Chat.CYAN + "Press " + LH.Chat.YELLOW + "G" +
                      LH.Chat.CYAN + " to toggle flight mode");
         }
-        list.add(LH.Chat.WHITE + "Fall damage protection: " + (isEnabled ? LH.Chat.GREEN + "Enabled" : LH.Chat.RED + "Disabled"));
     }
     
     @Override

@@ -5,6 +5,15 @@ All notable changes to GT6 Gears will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2025-05-17
+
+### Fixed
+- Particles from jetpack was not working properly
+- "TungstenSteel" should be "Tungstensteel"
+
+### Removed
+- Unnecessary tooltip line of Gravity Regulator
+
 ## [1.1.0] - 2025-05-16
 
 ### Added

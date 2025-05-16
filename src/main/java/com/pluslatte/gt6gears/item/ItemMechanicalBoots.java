@@ -15,7 +15,7 @@ public class ItemMechanicalBoots extends ItemArmorBase {
         super(
                 Gt6Gears.MODID,
                 isTungstenSteel ? "gt6gears.mechanicalbootstungsteel" : "gt6gears.mechanicalboots",
-                isTungstenSteel ? "TungstenSteel Reinforced Mechanical Boots" : "Mechanical Boots",
+                isTungstenSteel ? "Tungstensteel Reinforced Mechanical Boots" : "Mechanical Boots",
                 "Assists walking.",
                 isTungstenSteel ? "mechanical_boots_ts" : "mechanical_boots",
                 3, // 足装備

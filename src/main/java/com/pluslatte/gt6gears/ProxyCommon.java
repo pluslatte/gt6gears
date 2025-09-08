@@ -25,41 +25,4 @@ public final class ProxyCommon extends Abstract_Proxy {
         
         // KeyInputHandlerはクライアント専用なので、ここでは登録しない
     }
-
-    @SubscribeEvent
-    public void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        EntityPlayer player = event.player;
-
-        // Mechanical Bootsの処理
-        if (player.getEquipmentInSlot(1) == null) {
-            player.stepHeight = 0.5F;
-            return;
-        }
-        if (
-            player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBoots ||
-            player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBootsTs
-        ) {
-            player.stepHeight = 1.0F;
-        } else {
-            player.stepHeight = 0.5F;
-        }
-    }
-
-    @SubscribeEvent
-    public void onJump(LivingEvent.LivingJumpEvent event) {
-        if (!(event.entity instanceof EntityPlayer)) {
-            return;
-        }
-        EntityPlayer player = (EntityPlayer) event.entity;
-
-        if (player.getEquipmentInSlot(1) == null) {
-            return;
-        }
-        if (
-            player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBoots ||
-            player.getEquipmentInSlot(1).getItem() == Gt6Gears.itemMechanicalBootsTs
-        ) {
-            player.motionY += 0.2F;
-        }
-    }
 }

@@ -5,6 +5,10 @@ All notable changes to GT6 Gears will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/ja/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## unreleased - 2025-09-09
+### Removed
+- Mechanical Boots
+
 ## [1.1.1] - 2025-05-17
 
 ### Fixed

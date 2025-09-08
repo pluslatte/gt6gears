@@ -1,6 +1,5 @@
 package com.pluslatte.gt6gears;
 
-import com.pluslatte.gt6gears.item.ItemMechanicalBoots;
 import com.pluslatte.gt6gears.item.ItemJetpackTank;
 import com.pluslatte.gt6gears.item.ItemGravityRegulator;
 import com.pluslatte.gt6gears.item.ability.GravityRegulatorAbilityHandler;
@@ -9,7 +8,6 @@ import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
 import gregapi.code.ModData;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import cpw.mods.fml.common.Mod;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,8 +23,6 @@ public final class Gt6Gears extends Abstract_Mod
 
     public static CreativeTabs CREATIVE_TAB;
 
-    public static ItemMechanicalBoots itemMechanicalBoots;
-    public static ItemMechanicalBoots itemMechanicalBootsTs;
     public static ItemJetpackTank itemJetpackTank;
     public static ItemGravityRegulator itemGravityRegulator;
 
@@ -67,17 +63,15 @@ public final class Gt6Gears extends Abstract_Mod
         CREATIVE_TAB = new CreativeTabs(MODID) {
             @Override
             public ItemStack getIconItemStack() {
-                return new ItemStack(itemMechanicalBoots, 1, 0);
+                return new ItemStack(itemJetpackTank, 1, 0);
             }
 
             @Override
             public Item getTabIconItem() {
-                return itemMechanicalBoots;
+                return itemJetpackTank;
             }
         };
 
-        itemMechanicalBoots = new ItemMechanicalBoots(false);
-        itemMechanicalBootsTs = new ItemMechanicalBoots(true);
         itemJetpackTank = new ItemJetpackTank();
         itemGravityRegulator = new ItemGravityRegulator();
     }
@@ -91,8 +85,6 @@ public final class Gt6Gears extends Abstract_Mod
     @Override
     public void onModPostInit2(FMLPostInitializationEvent aEvent) {
         // 後の初期化段階ですべてのアイテムのレシピを登録
-        ItemMechanicalBoots.registerRecipe();
-        ItemMechanicalBoots.registerRecipeTungstenSteel();
         ItemJetpackTank.registerRecipe();
         ItemGravityRegulator.registerRecipe();
     }

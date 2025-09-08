@@ -4,7 +4,6 @@ GT6 Gears adds equipment for GregTech 6, including jetpacks, gravity regulators,
 
 ## Features
 
-- **Mechanical Boots**: Provides jump boost and convenient 1-block stepping
 - **Jetpack Tank**: Flight capability with fuel consumption
 - **Gravity Regulator**: Control gravity to do Creative fly
 

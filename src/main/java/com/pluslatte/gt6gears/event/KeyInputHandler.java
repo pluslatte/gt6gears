@@ -3,6 +3,7 @@ package com.pluslatte.gt6gears.event;
 import com.pluslatte.gt6gears.ProxyClient;
 import com.pluslatte.gt6gears.item.ItemGravityRegulator;
 import com.pluslatte.gt6gears.item.ItemJetpackTank;
+import com.pluslatte.gt6gears.item.ItemJetpackTankAdvanced;
 import com.pluslatte.gt6gears.network.PacketHandler;
 import com.pluslatte.gt6gears.network.PacketJetpackJump;
 import com.pluslatte.gt6gears.network.PacketGravityRegulatorToggle;

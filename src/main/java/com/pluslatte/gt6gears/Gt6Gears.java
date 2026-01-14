@@ -1,6 +1,7 @@
 package com.pluslatte.gt6gears;
 
 import com.pluslatte.gt6gears.item.ItemJetpackTank;
+import com.pluslatte.gt6gears.item.ItemJetpackTankAdvanced;
 import com.pluslatte.gt6gears.item.ItemGravityRegulator;
 import com.pluslatte.gt6gears.item.ability.GravityRegulatorAbilityHandler;
 import cpw.mods.fml.common.event.*;
@@ -14,16 +15,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = Gt6Gears.MODID, version = Gt6Gears.VERSION)
-public final class Gt6Gears extends Abstract_Mod
-{
+public final class Gt6Gears extends Abstract_Mod {
     public static final String MODID = "gt6gears";
     public static final String MODNAME = "gt6 gears";
-    public static final String VERSION = "1.1.1";
+    public static final String VERSION = "1.2.0";
     public static ModData MOD_DATA = new ModData(MODID, MODNAME);
 
     public static CreativeTabs CREATIVE_TAB;
 
     public static ItemJetpackTank itemJetpackTank;
+    public static ItemJetpackTankAdvanced itemJetpackTankAdvanced;
     public static ItemGravityRegulator itemGravityRegulator;
 
     @cpw.mods.fml.common.SidedProxy(modId = MODID, clientSide = "com.pluslatte.gt6gears.ProxyClient", serverSide = "com.pluslatte.gt6gears.ProxyCommon")
@@ -50,13 +51,40 @@ public final class Gt6Gears extends Abstract_Mod
     }
 
     // Do not change these 7 Functions. Just keep them this way.
-    @cpw.mods.fml.common.Mod.EventHandler public final void onPreLoad           (cpw.mods.fml.common.event.FMLPreInitializationEvent    aEvent) {onModPreInit(aEvent);}
-    @cpw.mods.fml.common.Mod.EventHandler public final void onLoad              (cpw.mods.fml.common.event.FMLInitializationEvent       aEvent) {onModInit(aEvent);}
-    @cpw.mods.fml.common.Mod.EventHandler public final void onPostLoad          (cpw.mods.fml.common.event.FMLPostInitializationEvent   aEvent) {onModPostInit(aEvent);}
-    @cpw.mods.fml.common.Mod.EventHandler public final void onServerStarting    (cpw.mods.fml.common.event.FMLServerStartingEvent       aEvent) {onModServerStarting(aEvent);}
-    @cpw.mods.fml.common.Mod.EventHandler public final void onServerStarted     (cpw.mods.fml.common.event.FMLServerStartedEvent        aEvent) {onModServerStarted(aEvent);}
-    @cpw.mods.fml.common.Mod.EventHandler public final void onServerStopping    (cpw.mods.fml.common.event.FMLServerStoppingEvent       aEvent) {onModServerStopping(aEvent);}
-    @cpw.mods.fml.common.Mod.EventHandler public final void onServerStopped     (cpw.mods.fml.common.event.FMLServerStoppedEvent        aEvent) {onModServerStopped(aEvent);}
+    @cpw.mods.fml.common.Mod.EventHandler
+    public final void onPreLoad(cpw.mods.fml.common.event.FMLPreInitializationEvent aEvent) {
+        onModPreInit(aEvent);
+    }
+
+    @cpw.mods.fml.common.Mod.EventHandler
+    public final void onLoad(cpw.mods.fml.common.event.FMLInitializationEvent aEvent) {
+        onModInit(aEvent);
+    }
+
+    @cpw.mods.fml.common.Mod.EventHandler
+    public final void onPostLoad(cpw.mods.fml.common.event.FMLPostInitializationEvent aEvent) {
+        onModPostInit(aEvent);
+    }
+
+    @cpw.mods.fml.common.Mod.EventHandler
+    public final void onServerStarting(cpw.mods.fml.common.event.FMLServerStartingEvent aEvent) {
+        onModServerStarting(aEvent);
+    }
+
+    @cpw.mods.fml.common.Mod.EventHandler
+    public final void onServerStarted(cpw.mods.fml.common.event.FMLServerStartedEvent aEvent) {
+        onModServerStarted(aEvent);
+    }
+
+    @cpw.mods.fml.common.Mod.EventHandler
+    public final void onServerStopping(cpw.mods.fml.common.event.FMLServerStoppingEvent aEvent) {
+        onModServerStopping(aEvent);
+    }
+
+    @cpw.mods.fml.common.Mod.EventHandler
+    public final void onServerStopped(cpw.mods.fml.common.event.FMLServerStoppedEvent aEvent) {
+        onModServerStopped(aEvent);
+    }
 
     @Override
     public void onModPreInit2(FMLPreInitializationEvent aEvent) {
@@ -73,6 +101,7 @@ public final class Gt6Gears extends Abstract_Mod
         };
 
         itemJetpackTank = new ItemJetpackTank();
+        itemJetpackTankAdvanced = new ItemJetpackTankAdvanced();
         itemGravityRegulator = new ItemGravityRegulator();
     }
 
@@ -86,6 +115,7 @@ public final class Gt6Gears extends Abstract_Mod
     public void onModPostInit2(FMLPostInitializationEvent aEvent) {
         // 後の初期化段階ですべてのアイテムのレシピを登録
         ItemJetpackTank.registerRecipe();
+        ItemJetpackTankAdvanced.registerRecipe();
         ItemGravityRegulator.registerRecipe();
     }
 

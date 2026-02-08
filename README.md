@@ -7,6 +7,10 @@ GT6 Gears adds equipment for GregTech 6, including Jetpacks and Gravity Regulato
 - **Liquid Fuel Jetpack**: Flight capability with fuel consumption
 - **Gravity Regulator**: Control gravity to do Creative fly
 
+### Extra
+
+- **Mud Recipe**: Craft GregTech's Mud using a new recipe
+
 ## Requirements
 
 - Minecraft 1.7.10

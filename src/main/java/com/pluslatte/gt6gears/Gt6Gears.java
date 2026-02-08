@@ -4,6 +4,7 @@ import com.pluslatte.gt6gears.item.ItemJetpackTank;
 import com.pluslatte.gt6gears.item.ItemJetpackTankAdvanced;
 import com.pluslatte.gt6gears.item.ItemGravityRegulator;
 import com.pluslatte.gt6gears.item.ability.GravityRegulatorAbilityHandler;
+import com.pluslatte.gt6gears.recipe.RecipesMud;
 import cpw.mods.fml.common.event.*;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
@@ -117,6 +118,9 @@ public final class Gt6Gears extends Abstract_Mod {
         ItemJetpackTank.registerRecipe();
         ItemJetpackTankAdvanced.registerRecipe();
         ItemGravityRegulator.registerRecipe();
+
+        // GregTech の Mud のレシピを登録
+        RecipesMud.registerRecipes();
     }
 
     @Override

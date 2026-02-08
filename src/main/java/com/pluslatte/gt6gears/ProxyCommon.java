@@ -1,28 +1,15 @@
 package com.pluslatte.gt6gears;
 
-import com.pluslatte.gt6gears.network.PacketHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingEvent;
-
 
 public final class ProxyCommon extends Abstract_Proxy {
     // Insert your Serverside-only implementation of Stuff here
     @Override
     public void onProxyAfterPostInit(Abstract_Mod aMod, FMLPostInitializationEvent aEvent) {
-        System.out.println("####################EVENT REG (SERVER)####################");
-        MinecraftForge.EVENT_BUS.register(this);
-        FMLCommonHandler.instance().bus().register(this);
-        
-        // パケットハンドラーの初期化
-        PacketHandler.init();
-        
-        // KeyInputHandlerはクライアント専用なので、ここでは登録しない
+        // サーバーサイドの初期化（現在は特に処理なし）
     }
 }

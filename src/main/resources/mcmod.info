@@ -2,7 +2,7 @@
 {
   "modid": "gt6gears",
   "name": "GT6 Gears",
-  "description": "Adds equipment for GregTech 6, including Jetpacks and Gravity Regulators.",
+  "description": "Adds recipes for GregTech 6, including a Mud Ball recipe from Clay Ball and Sand Dust.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",

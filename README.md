@@ -1,15 +1,10 @@
 # GT6 Gears
 
-GT6 Gears adds equipment for GregTech 6, including Jetpacks and Gravity Regulators.
+GT6 Gears adds recipes for GregTech 6.
 
 ## Features
 
-- **Liquid Fuel Jetpack**: Flight capability with fuel consumption
-- **Gravity Regulator**: Control gravity to do Creative fly
-
-### Extra
-
-- **Mud Recipe**: Craft GregTech's Mud using a new recipe
+- **Mud Recipe**: Craft GregTech's Mud Ball using Clay Ball and Sand Dust
 
 ## Requirements
 
@@ -26,8 +21,8 @@ GT6 Gears adds equipment for GregTech 6, including Jetpacks and Gravity Regulato
 
 ## Usage
 
-- All items have crafting recipes integrated with GregTech's system
-- For Gravity Regulator, press `G` (default) to toggle on/off
+- All recipes are integrated with GregTech's system
+- Clay Ball + Sand Dust → 2x Mud Ball
 
 ## Development
 

@@ -1,9 +1,5 @@
 package com.pluslatte.gt6gears;
 
-import com.pluslatte.gt6gears.item.ItemJetpackTank;
-import com.pluslatte.gt6gears.item.ItemJetpackTankAdvanced;
-import com.pluslatte.gt6gears.item.ItemGravityRegulator;
-import com.pluslatte.gt6gears.item.ability.GravityRegulatorAbilityHandler;
 import com.pluslatte.gt6gears.recipe.RecipesMud;
 import cpw.mods.fml.common.event.*;
 import gregapi.api.Abstract_Mod;
@@ -21,12 +17,6 @@ public final class Gt6Gears extends Abstract_Mod {
     public static final String MODNAME = "gt6 gears";
     public static final String VERSION = "1.2.0";
     public static ModData MOD_DATA = new ModData(MODID, MODNAME);
-
-    public static CreativeTabs CREATIVE_TAB;
-
-    public static ItemJetpackTank itemJetpackTank;
-    public static ItemJetpackTankAdvanced itemJetpackTankAdvanced;
-    public static ItemGravityRegulator itemGravityRegulator;
 
     @cpw.mods.fml.common.SidedProxy(modId = MODID, clientSide = "com.pluslatte.gt6gears.ProxyClient", serverSide = "com.pluslatte.gt6gears.ProxyCommon")
     public static Abstract_Proxy PROXY;
@@ -89,36 +79,16 @@ public final class Gt6Gears extends Abstract_Mod {
 
     @Override
     public void onModPreInit2(FMLPreInitializationEvent aEvent) {
-        CREATIVE_TAB = new CreativeTabs(MODID) {
-            @Override
-            public ItemStack getIconItemStack() {
-                return new ItemStack(itemJetpackTank, 1, 0);
-            }
 
-            @Override
-            public Item getTabIconItem() {
-                return itemJetpackTank;
-            }
-        };
-
-        itemJetpackTank = new ItemJetpackTank();
-        itemJetpackTankAdvanced = new ItemJetpackTankAdvanced();
-        itemGravityRegulator = new ItemGravityRegulator();
     }
 
     @Override
     public void onModInit2(FMLInitializationEvent aEvent) {
-        // Gravity Regulator のイベントハンドラーを登録
-        MinecraftForge.EVENT_BUS.register(new GravityRegulatorAbilityHandler());
+
     }
 
     @Override
     public void onModPostInit2(FMLPostInitializationEvent aEvent) {
-        // 後の初期化段階ですべてのアイテムのレシピを登録
-        ItemJetpackTank.registerRecipe();
-        ItemJetpackTankAdvanced.registerRecipe();
-        ItemGravityRegulator.registerRecipe();
-
         // GregTech の Mud のレシピを登録
         RecipesMud.registerRecipes();
     }

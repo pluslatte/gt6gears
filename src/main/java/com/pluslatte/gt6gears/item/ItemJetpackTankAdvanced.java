@@ -251,7 +251,7 @@ public class ItemJetpackTankAdvanced extends ItemArmorBase implements IFluidCont
                 // 落下ダメージをリセット
                 player.fallDistance = 0;
 
-                // パーティクル効果を表示（サーバー側）
+                // パーティクル効果を表示（クライアント側）
                 for (int i = 0; i < 2; i++) {
                     double offsetX = player.posX + (player.getRNG().nextDouble() - 0.5) * 0.5;
                     double offsetZ = player.posZ + (player.getRNG().nextDouble() - 0.5) * 0.5;

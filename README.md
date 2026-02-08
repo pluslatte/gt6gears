@@ -1,12 +1,15 @@
 # GT6 Gears
 
-GT6 Gears adds equipment for GregTech 6, including jetpacks, gravity regulators, and mechanical boots.
+GT6 Gears adds equipment for GregTech 6, including Jetpacks and Gravity Regulators.
 
 ## Features
 
-- **Mechanical Boots**: Provides jump boost and convenient 1-block stepping
-- **Jetpack Tank**: Flight capability with fuel consumption
+- **Liquid Fuel Jetpack**: Flight capability with fuel consumption
 - **Gravity Regulator**: Control gravity to do Creative fly
+
+### Extra
+
+- **Mud Recipe**: Craft GregTech's Mud using a new recipe
 
 ## Requirements
 
@@ -31,6 +34,7 @@ GT6 Gears adds equipment for GregTech 6, including jetpacks, gravity regulators,
 This project uses [anatawa12's ForgeGradle 1.2 fork](https://github.com/anatawa12/ForgeGradle-1.2).
 
 To set up development environment:
+
 ```bash
 git clone https://github.com/pluslatte/gt6gears.git
 cd gt6gears
